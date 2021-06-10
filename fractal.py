@@ -28,7 +28,7 @@ def paint(t: ti.f32, power: ti.i32, re: ti.f32, im: ti.f32):
 
 power = eval(input("Power of z -> "))
 gui = ti.GUI("Julia Set", res=(2400, 1200))
-for i in range(10000000):
+for i in range(1000000):
     re, im = gui.get_cursor_pos()
     paint(i * 0.03, power, re, im)
     #paint(i * 0.03, power)
