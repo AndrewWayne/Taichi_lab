@@ -38,9 +38,15 @@ def paint(iter:ti.f32):
 
 gui = ti.GUI("Try1", res = (n, n))
 speedg = gui.slider('Speed', 0.01, 10)
+result_dir = "./results"
+video_manager = ti.VideoManager(output_dir=result_dir, framerate=60, automatic_build=False)
 #for i in range(10000000):
 while gui.running:
     iter += speedg.value
     paint(iter)
     gui.set_image(pixels)
+    p_image = pixels.to_numpy()
+    video_manager.write_frame(p_image)
     gui.show()
+    
+video_manager.make_video(gif=True, mp4=True)
